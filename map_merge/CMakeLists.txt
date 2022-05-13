@@ -94,6 +94,8 @@ target_link_libraries(combine_grids ${rclcpp_LIBRARIES} ${OpenCV_LIBS})
 target_link_libraries(map_merge combine_grids)
 # target_link_libraries(map_merge)
 
+ament_target_dependencies(combine_grids ${DEPENDENCIES})
+
 ament_target_dependencies(map_merge ${DEPENDENCIES})
 
 install(
