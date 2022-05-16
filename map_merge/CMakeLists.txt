@@ -24,7 +24,7 @@ find_package(map_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 
-find_package(Boost REQUIRED COMPONENTS thread)
+find_package(Boost COMPONENTS system REQUIRED)
 
 # OpenCV is required for merging without initial positions
 find_package(OpenCV REQUIRED)
@@ -91,7 +91,7 @@ target_include_directories(combine_grids PUBLIC
 target_link_libraries(combine_grids ${rclcpp_LIBRARIES} ${OpenCV_LIBS})
 # target_link_libraries(combine_grids ${OpenCV_LIBRARIES})
 
-target_link_libraries(map_merge combine_grids)
+target_link_libraries(map_merge combine_grids ${Boost_SYSTEM_LIBRARY})
 # target_link_libraries(map_merge)
 
 ament_target_dependencies(combine_grids ${DEPENDENCIES})
